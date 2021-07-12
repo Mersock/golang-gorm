@@ -1,0 +1,24 @@
+version: '3.9'
+services:
+  app:
+    container_name: golang-gorm-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
+    volumes:
+      - '.:/app'
+    tty: true  
+    depends_on:
+      - mysql-db 
+  mysql-db:
+    image: 'mysql:8.0.25'
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: golang-gorm-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - '3306:3306'
+    tty: true
+        
