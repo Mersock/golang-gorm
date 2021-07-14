@@ -18,6 +18,7 @@ services:
     container_name: golang-gorm-db
     environment:
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: knight
     ports:
       - '3306:3306'
     tty: true
